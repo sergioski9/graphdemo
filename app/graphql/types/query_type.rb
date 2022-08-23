@@ -7,9 +7,7 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
-    # TODO: remove me
     field :users, [Types::UserType], null: false
-
     def users
       User.all
     end
@@ -17,7 +15,6 @@ module Types
     field :user, Types::UserType, null: false do
       argument :id, Integer, required: false
     end
-
     def user(id:)
       User.find(id)
     end
