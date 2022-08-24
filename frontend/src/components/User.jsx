@@ -24,14 +24,16 @@ function User() {
   if (loading) return 'Loading....'
   if (error) return `Error ${error.message}`
 
+  const showLoad = (event) => console.log(this.refs.formId.value)
+
   return (
     <div>
       <form onSubmit={event => {
         event.preventDefault()
-        console.log(event.nativeEvent.path[0][0].value)
+        console.log(this.refs.formId.value)
         setId(parseInt(Number(event.nativeEvent.path[0][0].value)))
         }}>
-        <input type="text" />
+        <input type="text" ref="formId" onChange={this.showLoad} />
         <input type='submit' value='click aqui' />
       </form>
       <div key={data.user.id}>
